@@ -37,26 +37,43 @@ const Memes = () => {
     };
 
     return (
-        <div className="memes">
-            <button onClick={() => setDarkMode(!darkMode)}>
-                Toggle Dark Mode
+        <div>
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand" href="#">Meme Generator</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <input
-                type="text"
-                placeholder="Search..."
-                onChange={event => setSearchTerm(event.target.value)}
-            />
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <input
+                    className="form-control"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    onChange={event => setSearchTerm(event.target.value)}
+                  />
+                </li>
+              </ul>
+              <button className="btn btn-outline-success my-2 my-sm-0" onClick={() => setDarkMode(!darkMode)}>
+                Toggle Dark Mode
+              </button>
+            </div>
+          </nav>
+    
+          <div className="memes">
             {filteredMemes.map((meme, index) => (
-                <div key={index} className="meme">
-                    <h2>{meme.name}</h2>
-                    <img src={meme.url} alt={meme.name} />
-                    <button onClick={() => toggleFavorite(meme)}>
-                        {favorites.some(favorite => favorite.id === meme.id) ? 'Unfavorite' : 'Favorite'}
-                    </button>
-                </div>
+              <div key={index} className="meme">
+                <h2>{meme.name}</h2>
+                <img src={meme.url} alt={meme.name} />
+                <button className="btn btn-primary" onClick={() => toggleFavorite(meme)}>
+                  {favorites.some(favorite => favorite.id === meme.id) ? 'Unfavorite' : 'Favorite'}
+                </button>
+              </div>
             ))}
+          </div>
         </div>
-    );
-};
-
-ReactDOM.render(<Memes />, document.getElementById('root'));
+      );
+    };
+    
+    ReactDOM.render(<Memes />, document.getElementById('root'));
