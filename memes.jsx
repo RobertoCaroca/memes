@@ -6,7 +6,7 @@ const Memes = () => {
   const [favorites, setFavorites] = useState(
     JSON.parse(localStorage.getItem('favorites')) || []
   );
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     axios.get('https://api.imgflip.com/get_memes')
@@ -42,38 +42,37 @@ const Memes = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className={`navbar navbar-expand-lg navbar-light ${darkMode ? 'dark-mode' : ''}`}>
         <a className="navbar-brand" href="#">Meme Generator</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#favorites">Favorites</a>
+                <a className="nav-link" href="#favorites">Favorites</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#popular">Popular</a>
+                <a className="nav-link" href="#popular">Popular</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#latest">Latest</a>
+                <a className="nav-link" href="#latest">Latest</a>
             </li>
             <li className="nav-item">
-              <input
+                <input
                 className="form-control"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
                 onChange={event => setSearchTerm(event.target.value)}
-              />
+                />
             </li>
-          </ul>
-          <button className="btn btn-outline-success my-2 my-sm-0" onClick={() => setDarkMode(!darkMode)}>
+            </ul>
+            <button className="btn btn-outline-success my-2 my-sm-0" onClick={() => setDarkMode(!darkMode)}>
             Toggle Dark Mode
-          </button>
+            </button>
         </div>
-      </nav>
-
+        </nav>
       <div className="memes">
         {filteredMemes.map((meme, index) => (
           <div key={meme.id} className="meme">
