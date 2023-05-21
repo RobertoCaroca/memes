@@ -24,6 +24,7 @@ body {
     -ms-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
+    text-align: center; /* Center the content */
 }
 
 .meme:hover {
@@ -36,26 +37,18 @@ body {
     border-bottom: 1px solid #ccc;
     padding-bottom: 15px;
     margin-bottom: 5px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1); /* Add a bit of shadow to the images */
 }
 
 .meme h2 {
     font-size: 16px;
     color: #333;
     padding: 10px;
+    text-transform: uppercase; /* Make the meme title all caps */
 }
 
 body.dark-mode {
     background-color: #0d1117;
-    color: #c9d1d9;
-}
-
-body.dark-mode .navbar {
-    background-color: #161b22;
-    border-color: #30363d;
-}
-
-body.dark-mode .navbar .navbar-brand,
-body.dark-mode .navbar .nav-link {
     color: #c9d1d9;
 }
 
@@ -77,4 +70,16 @@ body.dark-mode .far.fa-heart {
 body.dark-mode button.btn.btn-primary {
     background-color: #30363d;
     border-color: #484f58;
+}
+
+body.dark-mode .navbar {
+    background-color: #161b22;
+    border-color: #30363d;
+}
+
+body.dark-mode .navbar .navbar-brand,
+body.dark-mode .navbar .nav-link,
+body.dark-mode .meme h2, /* Set meme title color in dark mode */
+body.dark-mode .meme .btn.btn-outline-primary { /* Set favorite button color in dark mode */
+    color: #58a6ff; /* Blue-ish color */
 }
