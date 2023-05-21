@@ -63,12 +63,15 @@ const Memes = () => {
     
           <div className="memes">
             {filteredMemes.map((meme, index) => (
-              <div key={index} className="meme">
+                <div key={meme.id} className="meme">
                 <h2>{meme.name}</h2>
                 <img src={meme.url} alt={meme.name} />
-                <button className="btn btn-primary" onClick={() => toggleFavorite(meme)}>
-                  {favorites.some(favorite => favorite.id === meme.id) ? 'Unfavorite' : 'Favorite'}
-                </button>
+                <button className="btn btn-outline-primary" onClick={() => toggleFavorite(meme)}>
+                    {favorites.some(favorite => favorite.id === meme.id) 
+                        ? <i className="fas fa-heart"></i> 
+                        : <i className="far fa-heart"></i>
+                    }
+                </button> 
               </div>
             ))}
           </div>
