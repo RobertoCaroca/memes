@@ -1,0 +1,38 @@
+body {
+    background-color: #f3f3f3;
+    font-family: Arial, sans-serif;
+}
+
+.memes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.meme {
+    width: 300px;
+    margin: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.meme h2 {
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+}
+
+.meme img {
+    max-width: 100%;
+    height: auto;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #f3f3f3;
+}
+
+body.dark-mode .meme {
+    background-color: #444;
+    color: #f3f3f3;
+}
